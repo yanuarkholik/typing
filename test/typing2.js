@@ -9,10 +9,9 @@ describe('typing creacker', function() {
         before(async function() {
             await loginModule.login();
         })
-        after(async function() {
-            await driver.sleep(600000);
-            await driver.quit();
-        })
+        // after(async function() {
+        //     await driver.quit();
+        // })
         
         it('Typing', async function() {
             await driver.findElement(By.xpath("//button[contains(text(), 'Allow all')]")).click()
@@ -30,11 +29,14 @@ describe('typing creacker', function() {
 
                 for(j=0; j<batas_atas_dua.length; j++){
                     // console.log(batas_atas_dua[j])
+                    await driver.sleep(120)
                     await driver.wait(until.elementLocated(By.xpath("//input[@id='inputfield']"))).sendKeys(batas_atas_dua[j])
                 }
 
                 await driver.wait(until.elementLocated(By.xpath("//input[@id='inputfield']"))).sendKeys(" ")
             }
+
+            await driver.sleep(86400000);
 
         })
     })
